@@ -1,3 +1,6 @@
+.no-scroll {
+    overflow: hidden;
+  }
 .menu-bar, .menu-overlay {
     position: fixed;
     top: 0;
@@ -8,6 +11,8 @@
     justify-content: space-between;
     align-items: center;
     z-index: 1;
+    
+
 }
 
 .menu-bar {
@@ -20,7 +25,7 @@
 .menu-logo {
     display: flex;
     align-items: flex-start;
-    color: #fdf9f9; /* Color blanco para que sea visible en la barra del menú */
+    color: #fdf9f9; 
 }
 .menu-nahu{
     flex:initial;
@@ -33,10 +38,11 @@
     cursor: pointer;
 }
 
-.menu-bar a,
-.menu-open p {
-    color: #fff;
+.menu-bar .a-link,
+.menu-open .p-text {
+    color: #ffffff;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 .menu-close {
@@ -47,8 +53,8 @@
     cursor: pointer;
 }
 
-.menu-close p {
-    color: #000;
+.menu-close .p-text {
+    color: #ffffff;
     cursor: pointer;
 }
 
@@ -59,7 +65,7 @@
     width: 100vw;
     height: 100vh;
     padding: 2em;
-    background-color: #dd4126;
+    background-color: #000000;
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -82,12 +88,14 @@
     display: flex;
     align-items: flex-end;
     cursor: pointer;
+    color: #ffffff;
 }
 
-.menu-close-icon p {
+.menu-close-icon .p-text {
     font-size: 100px;
-    -webkit-text-stroke: 5px #dd4126;
+    -webkit-text-stroke: 5px #ffffff;
     line-height: 70%;
+    text-transform: uppercase;
 }
 
 .menu-copy {
@@ -97,6 +105,7 @@
     justify-content: space-between;
     padding-top: 2em;
     margin-bottom: 2em; 
+    color: white;
 }
 
 .menu-links {
@@ -109,6 +118,7 @@
 .menu-info {
     margin-top: 2em; 
     display: flex;
+    color: #ffffff;
 }
 
 .menu-info-col {
@@ -117,6 +127,7 @@
     flex-direction: column;
     justify-content: flex-end;
     margin-left: 30px;
+    text-transform: uppercase;
 }
 
 .menu-preview {
@@ -126,6 +137,8 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    color: #ffffff;
+    text-transform: uppercase;
 }
 
 .menu-link-item {
@@ -138,12 +151,13 @@
     position: relative;
 }
 
-.menu-link-item-holder a {
-    color: #000;
+.menu-link-item-holder .a-link {
+    color: #ffffff;
     font-size: 90px; /* Aumentar el tamaño de la fuente */
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 85%;
+    text-transform: uppercase;
 }
 
 @media(max-width: 900px) {
@@ -155,7 +169,7 @@
         padding-top: 8em;
     }
 
-    .menu-link-item-holder a {
+    .menu-link-item-holder .a-link {
         font-size: 70px; /* Ajuste para dispositivos más pequeños */
     }
 }

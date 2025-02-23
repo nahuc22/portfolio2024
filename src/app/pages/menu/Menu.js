@@ -1,7 +1,12 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import "./menu.css";
+import style from "./menu.css"
 import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+// Registra el plugin ScrollToPlugin con GSAP
+gsap.registerPlugin(ScrollToPlugin);
 
 const menuLinks = [
   { path: "#home", label: "Home" },
@@ -14,7 +19,7 @@ const menuLinks = [
 const Menu = () => {
   const container = useRef();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const targetRef = useRef(null); // Guarda la referencia del objetivo para el smooth scrolling
+  const targetRef = useRef(null);
 
   const tl = useRef();
 
@@ -37,12 +42,15 @@ const Menu = () => {
         ease: "power4.inOut",
         delay: -0.75,
       });
+
   }, []);
 
   useEffect(() => {
     if (isMenuOpen) {
+      document.body.classList.add("no-scroll");
       tl.current.play();
     } else {
+      document.body.classList.remove("no-scroll");
       tl.current.reverse();
     }
   }, [isMenuOpen]);
@@ -60,9 +68,10 @@ const Menu = () => {
     if (!isMenuOpen && targetRef.current) {
       // Realiza el smooth scrolling después de que el menú se haya cerrado
       setTimeout(() => {
-        targetRef.current.scrollIntoView({ behavior: "smooth" });
+        const targetPosition = targetRef.current.getBoundingClientRect().top + window.pageYOffset;
+        gsap.to(window, { scrollTo: { y: targetPosition }, duration:2.7, ease: "power2.inOut" });
         targetRef.current = null;
-      }, 1500); // Ajusta el tiempo según la duración de la animación de cierre
+      }, 1000); // Ajusta el tiempo según la duración de la animación de cierre
     }
   }, [isMenuOpen]);
 
@@ -70,23 +79,22 @@ const Menu = () => {
     <div className="menu-container" ref={container}>
       <div className="menu-bar">
         <div className="menu-logo">
-          <a href="#home" onClick={(e) => handleLinkClick(e, link.path)}>Nahu</a>
+          <a className="a-link" href="#home">Nahu</a>
         </div>
         <div className="menu-open" onClick={toggleMenu}>
-          <p>Menu</p>
+          <p className="p-text">Menu</p>
         </div>
       </div>
       <div className="menu-overlay">
         <div className="menu-overlay-bar">
           <div className="menu-logo">
-            {/* <a className="menu-nahu" href="#home">Nahu</a> */}
+            <a className="menu-nahu" href="#home">Nahu</a>
           </div>
           <div className="menu-close">
-            {/* <p>Close</p> */}
           </div>
         </div>
         <div className="menu-close-icon" onClick={toggleMenu}>
-          <p>&#x2715;</p>
+          <p className="p-text">&#x2715;</p>
         </div>
         <div className="menu-copy">
           <div className="menu-links">
@@ -106,18 +114,18 @@ const Menu = () => {
           </div>
           <div className="menu-info">
             <div className="menu-info-col">
-              <a href="#">Instagram&#8599;</a>
-              <a href="#">Linkedin &#8599;</a>
-              <a href="#">Github &#8599;</a>
+              <a className="a-link" href="#">Instagram&#8599;</a>
+              <a className="a-link" href="#">Linkedin &#8599;</a>
+              <a className="a-link" href="#">Github &#8599;</a>
             </div>
             <div className="menu-info-col">
-              <p>nahuelcastilla22@gmail.com</p>
-              <p>+5493816319655</p>
+              <p className="p-text">nahuelcastilla22@gmail.com</p>
+              <p className="p-text">+5493816319655</p>
             </div>
           </div>
         </div>
         <div className="menu-preview">
-          <p>View Showreel</p>
+          <p className="p-text">View Showreel</p>
         </div>
       </div>
     </div>

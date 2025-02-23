@@ -1,0 +1,151 @@
+.projectsPage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  min-height: 100vh;
+  margin-top: 55px;
+  padding-top: 6em;
+  padding-bottom: 6em;
+  position: relative;
+}
+
+.previewBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.144);
+  opacity: 1;
+  overflow: hidden;
+  filter: brightness(0.3);
+}
+
+.imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.items {
+  position: relative;
+  width: 15%;
+  height: 100%;
+  padding: 10em 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 10;
+}
+
+.item {
+  position: relative;
+  padding: 0.25em 0;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.item:hover .projectName {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.projectName {
+  position: relative;
+  z-index: 11;
+  color: #ffffff;
+  padding: 6px 12px;
+  font-weight: lighter;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  backdrop-filter: blur(50px);
+  transition: 0.3s;
+}
+
+.preview {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 2;
+}
+
+.preview.active {
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.previewContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+  grid-template-rows: auto auto; /* Dos filas */
+  gap: 20px; /* Espacio entre los elementos */
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 30px; /* Padding extendido en toda la sección */
+  box-sizing: border-box;
+  z-index: 3;
+  border-radius: 10px; /* Bordes redondeados */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para un mejor contraste */
+}
+
+.previewTitle {
+  grid-column: 1 / span 2; /* El título ocupará ambas columnas */
+  font-size: 4em;
+  text-align: left;
+  color: #ffffff;
+  margin-bottom: 1.5em;
+}
+
+.previewDescription {
+  grid-column: 1 / span 2; /* La descripción ocupa ambas columnas */
+  font-size: 1.2em;
+  text-align: left;
+  color: #ffffff;
+  margin-bottom: 1.5em;
+}
+
+.previewTags {
+  grid-column: 1 / 2; /* Las etiquetas ocupan la primera columna */
+  font-size: 1.2em;
+  color: #ffffff;
+  text-align: left;
+}
+
+.previewImg {
+  grid-column: 2 / 3; /* La imagen ocupa la segunda columna */
+  width: 70%;
+  height: auto;
+  object-fit: cover;
+  transition: clip-path 0.3s ease-in-out;
+}
+
+.previewTitle,
+.previewTags,
+.previewDescription {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.previewTags {
+  margin-bottom: 10px; /* Añadir margen debajo de los tags */
+}
+
+.subTitle1,
+.subTitle2,
+.subTitle3 {
+  font-size: 1.7em;
+}
+.bullets1,
+.bullets2,
+.bullets3 {
+  font-size: 0.4em;
+}

@@ -1,32 +1,36 @@
 import { Inter } from "next/font/google";
+import Head from "next/head";
+import React from "react";
 import "./globals.css";
 
-import Menu from "@/components/menu/Menu";
-import About from "@/app/about/page";
-import Work from "@/app/work/page";
-import Projects from "@/app/projects/page"
-import Contact from "@/app/contact/page";
+import Menu from "@/app/pages/menu/Menu";
+import About from "@/app/pages/about/page";
+import Work from "@/app/pages/work/page";
+import Projects from "@/app/pages/projects/page";
+import Contact from "@/app/pages/contact/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Nahu Castilla :)",
-  description: "NextJS + GSAP project",
-};
-
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html lang="en">
+      <Head>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet"/>
+      </Head>
       <body className={inter.className}>
-        <Menu/>
-        <div className="page-container">
-        {children}
-        <About/>
-        <Work/>
-        <Projects/>
-        <Contact/>
+        <Menu />
+        <div>
+          {children}
+          <About />
+          <Work />
+          <Projects />
+          <Contact />
         </div>
-        </body>
+      </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
